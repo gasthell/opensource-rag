@@ -75,9 +75,6 @@ class ChatModel:
             top_p=0.95
         )
         
-        full_response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        
-        answer_start = full_response.rfind('[/INST]') + len('[/INST]')
-        final_answer = full_response[answer_start:].strip()
+        response = self.tokenizer.decode(outputs[0][inputs.input_ids.shape[-1]:], skip_special_tokens=True)
 
-        return final_answer
+        return response.strip()
