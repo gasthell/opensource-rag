@@ -21,12 +21,11 @@ EMBEDDING_MODEL, FAISS_INDEX, CHUNK_STORE = setup_rag_pipeline()
 chat_model = ChatModel(model=model, tokenizer=tokenizer, max_length=2048, embedding_model=EMBEDDING_MODEL, faiss_index=FAISS_INDEX, chunk_store=CHUNK_STORE, faiss_k=5)
 
 iface = gr.ChatInterface(
-    fn=chat_model.chat,
+    fn=chat_model.embedding_chat,
     title="Film chatbot",
     chatbot=gr.Chatbot(),
-    type="messages",
     description="An open-source chatbot powered for film recomendations.",
     examples=[["Can you solve this math problem for me? Find the value of x in the equation 2x + 5 = 15."], ["Write a python function to find the nth Fibonacci number."]]
 )
 
-iface.launch(share=True)
+iface.queue().launch(share=True)
