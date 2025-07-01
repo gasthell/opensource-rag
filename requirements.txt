@@ -1,0 +1,13 @@
+gradio
+datasets
+sentence-transformers
+faiss-cpu
+torch
+transformers
+huggingface-hub
+openpyxl
+python-docx
+pymupdf
+trl
+peft
+unsloth
